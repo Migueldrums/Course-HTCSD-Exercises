@@ -68,8 +68,7 @@
 ;Use the DrRacket square, beside and above functions to create an image like this one:
 
 ;Image here* This image can't displayed because GiHub repositories don't support racket images.
-
-;Large square made up of four small blue and yellow squares divided equally.
+;(Large square made up of four small blue and yellow squares divided equally).
 
 ;If you prefer to be more creative feel free to do so. You can use other DrRacket image 
 ;functions to make a more interesting or more attractive image.
