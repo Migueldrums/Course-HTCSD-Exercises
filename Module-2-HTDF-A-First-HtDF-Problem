@@ -6,9 +6,9 @@
 ;its plural form.) For simplicity you may assume that just adding s is enough to pluralize a word.
 
 ;; string -> string
-;; produces plural words
-(check-expect (plural "car") (string-append "car" "s"))
-(check-expect (plural "pizza") (string-append "pizza" "s"))
+;; receives a singular word and produces a plural word
+(check-expect (plural "car") "cars")
+(check-expect (plural "pizza") "pizzas")
 
 ;(define (plural n)  ns)  ; this is the stub
 
