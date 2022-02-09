@@ -279,3 +279,196 @@ Canadian-Flag
 (overlay (triangle 50 "solid" "green")
          (rotate 180 
                  (triangle 50 "solid" "yellow")))
+
+;___________________________________________________________________________________________________
+;BSL P11
+;PROBLEM:
+;Given the following function definition:
+
+(define (bobble s)
+  (if (<= (string-length s) 6)
+      (string-append s "ible")
+      s))
+
+;Write out the step-by-step evaluation of the expression:
+
+;(bobble (substring "fungus" 0 4))
+
+;Be sure to show every intermediate evaluation step (including the original expression
+;and the final result, our answer has 7 steps).
+
+;My solution:
+
+(define (bobble s)
+  (if (<= (string-length s) 6)
+      (string-append s "ible")
+      s))
+
+(bobble (substring "fungus" 0 4))
+
+(bobble "fung")
+
+(string-append s "ible")
+
+(string-append "fung" "ible")
+
+"fungible"
+
+;Course solution:
+
+(define (bobble s)
+  (if (<= (string-length s) 6)
+      (string-append s "ible")
+      s))
+(bobble (substring "fungus" 0 4))
+
+(bobble "fung")
+
+(if (<= (string-length "fung") 6)
+    (string-append "fung" "ible")
+    "fung")
+
+(if (<= 4 6)
+    (string-append "fung" "ible")
+    "fung")
+
+(if true
+    (string-append "fung" "ible")
+    "fung")
+
+(string-append "fung" "ible")
+
+"fungible"
+
+;___________________________________________________________________________________________________
+;BSL P12
+;PROBLEM:
+;Uncomment the code below and fix the error(s)
+
+;(rectangle 10 solid red)
+
+;My solution:
+(require 2htdp/image)
+
+(rectangle 10 20 "solid" "red")
+
+;Course solution:
+
+(rectangle 10 20 "solid" "red"
+
+;___________________________________________________________________________________________________
+;BSL P13
+;PROBLEM:
+
+;Write the BSL expression that represents the arithmetic expression (7 - 2) * 4 which equals 20. 
+;Do not just write 20! Instead write BSL expression that clearly mirrors  (7 - 2) * 4.
+
+;My solution:
+
+(* (- 7 2) 4)
+
+;Course solution:
+
+(* (- 7 2) 4)
+
+;___________________________________________________________________________________________________
+;BSL P14
+;PROBLEM:
+
+;Write an expression that uses star and overlay to produce an image similar to this:
+
+                                     ;Image here*
+                ;Racket images cannot be displayed in GitHub repositories*
+
+;You can consult the DrRacket help desk for information on how to use star and overlay. 
+;Don't worry about the exact size of the stars.
+
+
+;My solution:
+
+(overlay (star 10 "solid" "blue")
+         (star 25 "solid" "yellow")
+         (star 40 "solid" "blue"))
+
+;Course solution:
+
+(overlay (star 15 "solid" "blue")
+         (star 30 "solid" "yellow")
+         (star 45 "solid" "blue"))
+
+;___________________________________________________________________________________________________
+;BSL P15
+;PROBLEM:
+
+;Write a function that consumes two numbers and produces the larger of the two. 
+
+;My solution:
+
+(define (larger-number a b)
+  (if (< a b)
+      b
+      a))
+
+;Course solution:
+
+(define (larger x y)
+  (if (> x y)
+      x
+      y))
+
+;___________________________________________________________________________________________________
+;BSL P16:
+
+;Given the following function definition:
+
+;(define (foo s)
+;  (if (string=? (substring s 0 1) "a")
+;      (string-append s "a")
+;      s))
+
+;Write out the step-by-step evaluation of the expression: 
+
+;(foo (substring "abcde" 0 3))
+
+;Be sure to show every intermediate evaluation step.
+
+;My solution:
+
+(define (foo s)
+  (if (string=? (substring s 0 1) "a")
+      (string-append s "a")
+      s))
+
+(foo (substring "abcde" 0 3))
+
+(if (string=? "a" "a")
+      (string-append "abc" "a")
+      "abc")
+
+(if true
+      (string-append "abc" "a")
+      "abc")
+
+"abca"
+
+;Course solution:
+
+(foo (substring "abcde" 0 3))
+
+(foo "abc")
+
+(if (string=? (substring "abc" 0 1) "a")
+    (string-append "abc" "a")
+    "abc")
+
+(if (string=? "a" "a")
+    (string-append "abc" "a")
+    "abc")
+
+(if true
+    (string-append "abc" "a")
+    "abc")
+
+(string-append "abc" "a")
+
+"abca"

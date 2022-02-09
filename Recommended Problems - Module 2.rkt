@@ -44,7 +44,7 @@
 (define (less-than-5? s)
   (< (string-length s) 5))
 
-
+;___________________________________________________________________________________________________
 ;PROBLEM 2:
 
 ;Use the How to Design Functions (HtDF) recipe to design a function that consumes an image, 
@@ -104,7 +104,7 @@
                       "outline"
                       "black")
            i))
-
+;___________________________________________________________________________________________________
 ;PROBLEM 3:
 
 ;There may be more than one problem with this function design. Uncomment 
