@@ -8,7 +8,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P1
-;PROBLEM:
+;PROBLEM 1:
 
 ;Write two expressions that multiply the numbers 3, 5 and 7. 
 ;The first should take advantage of the fact that * can accept more than 2 arguments. 
@@ -28,7 +28,7 @@
 
 ;____________________________________________________________________________________________________
 ;BSL P2
-;PROBLEM 1:
+;PROBLEM 2:
 
 ;Write out the step-by-step evaluation for the following expression: 
 
@@ -63,7 +63,7 @@
 
 ;____________________________________________________________________________________________________
 ;BSL P3
-;PROBLEM:
+;PROBLEM 3:
 
 ;Use the DrRacket square, beside and above functions to create an image like this one:
 
@@ -96,7 +96,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P4
-;PROBLEM:
+;PROBLEM 4:
 
 ;Write an expression that sticks the strings "Super" "Glue" together into a single string 
 ;"Super Glue" with a space between the two words.
@@ -109,7 +109,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P5
-;PROBLEM:
+;PROBLEM 5:
 
 ;Based on the two constants provided, write three expressions to determine whether: 
 
@@ -151,7 +151,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P6
-;PROBLEM:
+;PROBLEM 6:
 
 ;Given the following function definition:
 
@@ -178,7 +178,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P7
-;PROBLEM:
+;PROBLEM 7:
 
 ;Given the following function definition:
 
@@ -205,7 +205,7 @@
 
 ;___________________________________________________________________________________________________
 ;BSL P8
-;PROBLEM:
+;PROBLEM 8:
 
 ;The background for the Canadian Flag (without the maple leaf) is this:
 
@@ -246,7 +246,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P9
-;PROBLEM: 
+;PROBLEM 9: 
 
 ;Write the BSL expression that represents the arithmetic expression:     
 ;(6 + 3) * (9 - 7)
@@ -262,7 +262,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P10
-;PROBLEM:
+;PROBLEM 10:
 
 ;Write an expression that uses triangle, overlay, and rotate to produce an image similar to this:
 
@@ -282,7 +282,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P11
-;PROBLEM:
+;PROBLEM 11:
 ;Given the following function definition:
 
 (define (bobble s)
@@ -342,7 +342,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P12
-;PROBLEM:
+;PROBLEM 12:
 ;Uncomment the code below and fix the error(s)
 
 ;(rectangle 10 solid red)
@@ -358,7 +358,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P13
-;PROBLEM:
+;PROBLEM 13:
 
 ;Write the BSL expression that represents the arithmetic expression (7 - 2) * 4 which equals 20. 
 ;Do not just write 20! Instead write BSL expression that clearly mirrors  (7 - 2) * 4.
@@ -373,7 +373,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P14
-;PROBLEM:
+;PROBLEM 14:
 
 ;Write an expression that uses star and overlay to produce an image similar to this:
 
@@ -398,7 +398,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P15
-;PROBLEM:
+;PROBLEM 15:
 
 ;Write a function that consumes two numbers and produces the larger of the two. 
 
@@ -418,6 +418,7 @@ Canadian-Flag
 
 ;___________________________________________________________________________________________________
 ;BSL P16:
+;PROBLEM 16
 
 ;Given the following function definition:
 
@@ -472,3 +473,176 @@ Canadian-Flag
 (string-append "abc" "a")
 
 "abca"
+
+;___________________________________________________________________________________________________
+;HtDF L1:
+;PROBLEM 17:
+
+;DESIGN a function called yell that consumes strings like "hello" 
+;and adds "!" to produce strings like "hello!".
+
+;Remember, when we say DESIGN, we mean follow the recipe.
+
+;Leave behind commented out versions of the stub and template.
+
+;My solution:
+
+;; String -» String
+;; Function consumes string and adds "!" at the end of the string
+(check-expect (yell "hello") "hello!")
+(check-expect (yell "1234") "1234!")
+
+;(define (yell a) "a!") ;stub
+
+;(define (yell a) ;template
+;  (... a))
+
+(define (yell a)
+  (string-append a "!"))
+
+;Course solution:
+
+;; String -> String    
+;; add "!" to the end of s
+(check-expect (yell "hello") "hello!")
+(check-expect (yell "bye") (string-append "bye" "!"))
+
+;(define (yell s)  ;stub
+;  "a")
+
+;(define (yell s)  ;template
+;  (... s))
+
+(define (yell s)
+  (string-append s "!"))
+
+;___________________________________________________________________________________________________
+;HtDF L2:
+;PROBLEM 18:
+
+;DESIGN a function called area that consumes the length of one side 
+;of a square and produces the area of the square.
+
+;Remember, when we say DESIGN, we mean follow the recipe.
+
+;Leave behind commented out versions of the stub and template.
+
+;My solution:
+
+;; Number -> Number
+;; Consumes the length of one side and produces the area of the square
+(check-expect (area 2) 4)
+(check-expect (area 5) (* 5 5))
+
+;;(define (area a) 0) ;stub
+
+;;(define (area a) ;template
+;;  (... a))
+
+(define (area a)
+  (* a a))
+
+;Course solution:
+
+;; Natural -> Natural
+;; produce area of square with side length s
+(check-expect (area 2) (* 2 2))
+(check-expect (area 4) (* 4 4))
+
+;(define (area s) ; stub
+;  2)
+
+;(define (area s) ; template
+;  (... s))
+
+(define (area s)
+  (* s s))
+
+___________________________________________________________________________________________________
+;HtDF L3:
+;PROBLEM 19:
+
+;DESIGN a function called image-area that consumes an image and produces the 
+;area of that image. For the area it is sufficient to just multiple the image's 
+;width by its height.  Follow the HtDF recipe and leave behind commented 
+;out versions of the stub and template.
+
+;My solution:
+
+;; Number -> Number
+;; Consumes a image and produces the area of the that image
+(check-expect (image-area (rectangle 2 2 "solid" "red")) 4)
+(check-expect (image-area (triangle 20 "solid" "red")) 340)
+(check-expect (image-area (circle 50 "solid" "red")) (* 100 100))
+
+;;(define (image-area a) 0) ;stub
+
+;;(define (image-area a) ;template
+;;  (... a))
+
+(define (image-area a)
+      (* (image-width a)
+         (image-height a)))
+
+;Course solution:
+
+;; Image -> Natural
+;; produce the area of the consumed image (width * height)
+(check-expect (image-area (rectangle 3 4 "solid" "blue")) (* 3 4))
+
+;(define (image-area img) 0) ;stub
+
+;(define (image-area img)    ;template
+;  (... img))
+
+(define (image-area img)
+  (* (image-width img)
+     (image-height img)))
+
+___________________________________________________________________________________________________
+;HtDF L4
+;PROBLEM 20:
+
+;DESIGN a function that consumes an image and determines whether the 
+;image is tall.
+
+;Remember, when we say DESIGN, we mean follow the recipe.
+
+;Leave behind commented out versions of the stub and template.
+
+;My solution:
+
+;; Image -> Boolean
+;; Consumes an image and determines whether the image is tall.
+;; Consider tall image if its height is greater than its width. 
+(check-expect (image-tall? (rectangle 5 10 "solid" "blue")) true)
+(check-expect (image-tall? (rectangle 10 5 "solid" "blue")) false)
+
+;;(define (image-tall? img) true) ;stub
+
+;;(define (image-tall? img) ;template
+;;  (... img))
+
+(define (image-tall? img)
+  (if (> (image-height img) (image-width img))
+      true
+      false))
+
+; Course solution:
+
+;; Image -> Boolean
+;; produce true if img is tall (height is > width)
+(check-expect (tall? (rectangle 20 40 "solid" "red")) true)
+(check-expect (tall? (rectangle 40 20 "solid" "red")) false)
+(check-expect (tall? (square 40 "solid" "red")) false)
+
+;(define (tall? img) ; stub
+;  false)
+
+;(define (tall? img) ; template
+;  (... img))
+
+(define (tall? img)
+  (> (image-height img) (image-width img)))
+
+
