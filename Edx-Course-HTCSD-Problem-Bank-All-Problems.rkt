@@ -487,7 +487,7 @@ Canadian-Flag
 
 ;My solution:
 
-;; String -» String
+;; String -> String
 ;; Function consumes string and adds "!" at the end of the string
 (check-expect (yell "hello") "hello!")
 (check-expect (yell "1234") "1234!")
@@ -645,4 +645,220 @@ ________________________________________________________________________________
 (define (tall? img)
   (> (image-height img) (image-width img)))
 
+___________________________________________________________________________________________________
+;HtDF P1
+;PROBLEM 21:
 
+;Design a function that generates a summoning charm. For example: 
+
+;   (summon "Firebolt") should produce "accio Firebolt"
+;   (summon "portkey")  should produce "accio portkey"
+;   (summon "broom")    should produce "accio broom"
+   
+;See http://harrypotter.wikia.com/wiki/Summoning_Charm for background on
+;summoning charms.
+
+;Remember, when we say DESIGN, we mean follow the recipe.
+
+;Follow the HtDF recipe and leave behind commented out versions of the stub and template.
+
+;My solution:
+
+;; String -> String
+;; Add the word "accio" to the beginning of the variable summon
+(check-expect (summon "Firebolt") "accio Firebolt")
+(check-expect (summon "portkey") "accio portkey")
+(check-expect (summon "broom") (string-append "accio " "broom"))
+
+;;(define (summon a) "a") ;stub
+
+;; (define (summon a) ;template
+;;   (... a))
+
+(define (summon a)
+  (string-append "accio " a))
+
+;Course solution:
+
+;; String -> String
+;; prepend "accio " to the start of s
+(check-expect (summon "Firebolt") "accio Firebolt")
+(check-expect (summon "portkey") (string-append "accio " "portkey"))
+
+;(define (summon s)  ;stub
+;  "")
+
+;(define (summon s)  ;template
+;  (... s))
+
+(define (summon s)
+  (string-append "accio " s))
+
+___________________________________________________________________________________________________
+;HtDF P2
+;PROBLEM 22:
+
+;DESIGN function that consumes a string and determines whether its length is
+;less than 5.  Follow the HtDF recipe and leave behind commented out versions 
+;of the stub and template.
+
+;My solution:
+
+;; String -> Boolean
+;; Determines if the length of the string is less than 5
+(check-expect (less-than-5? "Hola") true)
+(check-expect (less-than-5? "Algorithm") false)
+(check-expect (less-than-5? "Argument") (< 8 5))
+
+;;(define (less-than-5? a) true) ;stub
+
+;; (define (less-than-5? a) ;template
+;;   (... a))
+
+(define (less-than-5? a)
+  (< (string-length a) 5))
+
+;Course solution:
+
+;; String -> Boolean
+;; produce true if length of s is less than 5
+(check-expect (less-than-5? "") true)
+(check-expect (less-than-5? "five") true)
+(check-expect (less-than-5? "12345") false)
+(check-expect (less-than-5? "eighty") false)
+
+;(define (less-than-5? s)  ;stub
+;  true)
+
+;(define (less-than-5? s)  ;template
+;  (... s))
+
+(define (less-than-5? s)
+  (< (string-length s) 5))
+
+___________________________________________________________________________________________________
+;HtDF P3
+;PROBLEM 23:
+
+;Use the How to Design Functions (HtDF) recipe to design a function that consumes an image, 
+;and appears to put a box around it. Note that you can do this by creating an "outline" 
+;rectangle that is bigger than the image, and then using overlay to put it on top of the image. 
+;For example:
+
+;(boxify (ellipse 60 30 "solid" "red")) should produce: image here*
+
+;Remember, when we say DESIGN, we mean follow the recipe.
+;Leave behind commented out versions of the stub and template.
+
+;My solution:
+
+;; image -> image
+;; Put a box around given image
+(check-expect (box (ellipse 60 30 "solid" "red"))
+              (overlay (ellipse 60 30 "solid" "red") (rectangle 62 32 "outline" "black")))
+
+(check-expect (box (triangle 60 "solid" "red"))
+              (overlay (triangle 60 "solid" "red") (rectangle 62 54 "outline" "black")))
+
+(check-expect (box (circle 40 "solid" "red"))
+              (overlay (circle 40 "solid" "red") (rectangle 82 82 "outline" "black")))
+
+;(define (box (ellipse 60 30 "solid" "red")) image) ;stub
+
+;(define (box a) ;template
+;  (... a))
+
+(define (box a)
+  (overlay a (rectangle (+ (image-width a) 2)
+                        (+ (image-height a) 2) "outline" "black")))
+
+;Course solution:
+
+;; Image -> Image
+;; Puts a box around given image. Box is 2 pixels wider and taller than given image.
+;; NOTE: A solution that follows the recipe but makes the box the same width and height 
+;;       is also good. It just doesn't look quite as nice. 
+(check-expect (boxify (circle 10 "solid" "red")) 
+              (overlay (rectangle 22 22 "outline" "black")
+                       (circle 10 "solid" "red")))
+(check-expect (boxify (star 40 "solid" "gray")) 
+              (overlay (rectangle 67 64 "outline" "black")
+                       (star 40 "solid" "gray")))
+
+;(define (boxify i) (circle 2 "solid" "green"))
+
+#;
+(define (boxify i)
+  (... i))
+
+(define (boxify i)
+  (overlay (rectangle (+ (image-width  i) 2)
+                      (+ (image-height i) 2)
+                      "outline"
+                      "black")
+           i))
+
+___________________________________________________________________________________________________
+;HtDF P4
+;PROBLEM 24:
+ 
+;You are working on designing a function and have completed your signature and purpose. 
+
+;Write three stubs with different bodies that are consistent with the signature and purpose below.
+
+;; String -> String
+;; pluralizes str by appending "s" to the end 
+
+;My solution:
+
+;; (define (str a) "as")                     ;stub
+;; (define (str a) "")                       ;stub
+;; (define (str a) (string-append a "s"))    ;stub
+
+;Course solution:
+
+;(define (pluralize str) str)
+
+;(define (pluralize str) "x")
+
+;(define (pluralize str) "")
+
+___________________________________________________________________________________________________
+;HtDF P5
+;PROBLEM 25:
+;Design a function that consumes a number and produces a blue solid triangle of that size.
+
+;You should use The How to Design Functions (HtDF) recipe, and your complete design should include
+;signature, purpose, commented out stub, examples/tests, commented out template and the completed function.
+
+;My solution:
+
+;; Number -> Image
+;; consumes a number and produces a blue solid triangle with that size.
+(check-expect (blue-triangle 5) (triangle 5 "solid" "blue"))
+(check-expect (blue-triangle 100) (triangle 100 "solid" "blue"))
+
+;;(define (blue-triangle a) (triangle 5 "solid" "blue")) ;stub
+
+;; (define (blue-triangle a)  ;template
+;;   (... a))
+
+(define (blue-triangle a)
+  (triangle a "solid" "blue"))
+
+;Course solution:
+
+;; Natural -> Image
+;; Given a number, produce a blue solid triangle of that size. 
+(check-expect (blue-triangle 7) (triangle 7 "solid" "blue"))
+(check-expect (blue-triangle 50) (triangle 50 "solid" "blue"))
+(check-expect (blue-triangle 100) (triangle 100 "solid" "blue"))
+
+;(define (blue-triangle n) empty-image) ; stub
+
+#;
+(define (blue-triangle n)
+  (... n))
+
+(define (blue-triangle n)
+  (triangle n "solid" "blue"))
